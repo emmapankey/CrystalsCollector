@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Crystals Collector</title>
+
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Mystery+Quest" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="scoreBox">
+
+        <p id="winAlert"></p>
+
+        <p id="wins">Wins: 0</p>
+
+        <p id="losses">Losses: 0</p>
+
+    </div>
+
+    <div class="fullPageDiv">
+
+        <h1>Crystals Collector!</h1>
+
+        <div class="instructions">
+
+            <p>You will be given a random number at the start of the game.</p>
+            <br>
+
+            <p>There are four crystals below. By clicking on a crystal You will add a specific amount of points to your total
+                score.
+            </p>
+            <br>
+
+            <p>The value of each cyrstal is hidden from you until you click on it.</p>
+            <br>
+
+            <p>Each time when the game starts, the game will change the values of each crystal.</p>
+
+        </div>
+
+        <div class="scoreContainer">
+
+            <div class="currentGameNumberIs">Random Number:</div>
+
+            <div class="gameNumber"></div>
+
+            <div class="yourTotalScoreIs">Your total score is:</div>
+
+            <div class="total">0</div>
+
+        </div>
+
+        <div class="crystalDiv">
+
+            <img id="blueCrystal" src="assets/images/bluecrystal.jpg" atl="blue crystal">
+
+            <img id="greenCrystal" src="assets/images/greencrystal.jpg" alt="green crystal">
+
+            <img id="purpleCrystal" src="assets/images/purplecrystal.jpg" alt="purple crystal">
+
+            <img id="redCrystal" src="assets/images/redcrystal.jpg" alt="red crystal">
+
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery.js"></script>    
+    <script src="assets/javascript/game.js"></script>
+</body>
+
+</html>
