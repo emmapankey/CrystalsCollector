@@ -1,6 +1,8 @@
-$(document).ready(function() {
+var wins = 0;
+var losses = 0;
 
-    $(function myFunction() {
+
+$(document).ready(function() {
 
     var randomGameNumberFromRange;
 
@@ -22,9 +24,6 @@ $(document).ready(function() {
 
     var totalScore;
 
-    var wins = 0;
-
-    var losses = 0;
 
     // wins = 0;
     // $('#wins').html('Wins: ' + wins);
@@ -32,82 +31,85 @@ $(document).ready(function() {
     // losses = 0;
     // $('#losses').html('Losses: ' + losses);
 
-    totalScore = 0;
-    $('.total').html(totalScore);
+    //totalScore = 0;
+    //$('.total').html(totalScore);
 
-
-        $(function getRandomGameNumberFromRange() {
-            randomGameNumberFromRange = Math.floor(Math.random() * (maxGameNumber - minGameNumber + 1) + minGameNumber);
-            $('.gameNumber').html(randomGameNumberFromRange);
-            console.log(randomGameNumberFromRange);
-        });
-
-        $(function getCrystalOneNumber() {
-            crystalOne = Math.floor(Math.random() * (maxCrystalNumber - minCrystalNumber + 1) + minCrystalNumber);
-            console.log(crystalOne);
-        });
-
-        $(function getCrystalTwoNumber() {
-            crystalTwo = Math.floor(Math.random() * (maxCrystalNumber - minCrystalNumber + 1) + minCrystalNumber);
-            console.log(crystalTwo);
-        });
-
-        $(function getCrystalThreeNumber() {
-            crystalThree = Math.floor(Math.random() * (maxCrystalNumber - minCrystalNumber + 1) + minCrystalNumber);
-            console.log(crystalThree);
-        });
-
-        $(function getCrystalFourNumber() {
-            crystalFour = Math.floor(Math.random() * (maxCrystalNumber - minCrystalNumber + 1) + minCrystalNumber);
-            console.log(crystalFour);
-        });
-
-        $('#blueCrystal').click(function () {
-            totalScore = totalScore + crystalOne;
-            $('.total').html(totalScore);
-            $.calculateWinsLosses();
-        });
-
-        $('#greenCrystal').click(function () {
-            totalScore = totalScore + crystalTwo;
-            $('.total').html(totalScore);
-            $.calculateWinsLosses();
-        });
-
-        $('#purpleCrystal').click(function () {
-            totalScore = totalScore + crystalThree;
-            $('.total').html(totalScore);
-            $.calculateWinsLosses();
-        });
-
-        $('#redCrystal').click(function () {
-            totalScore = totalScore + crystalFour;
-            $('.total').html(totalScore);
-            $.calculateWinsLosses();
-        });
-
-        $.calculateWinsLosses = function () {
-            if (totalScore === randomGameNumberFromRange) {
-                wins++;
-                $('#wins').html("Wins: " + wins);
-                myFunction();
-                // $("#blueCrystal").off();
-                // $("#greenCrystal").off();
-                // $("#purpleCrystal").off();
-                // $("#redCrsytal").off();
-            }
-            else if (totalScore > randomGameNumberFromRange) {
-                losses++;
-                $('#losses').html("Losses: " + losses);
-                myFunction();
-                // $("#blueCrystal").off();
-                // $("#greenCrystal").off();
-                // $("#purpleCrystal").off();
-                // $("#redCrsytal").off();
-            }
-        }
-
+    $(function startGame() {
+        $.resetGame();
     });
+
+    $('#blueCrystal').click(function () {
+        totalScore = totalScore + crystalOne;
+        $('.total').html(totalScore);
+        $.calculateWinsLosses();
+    });
+
+    $('#greenCrystal').click(function () {
+        totalScore = totalScore + crystalTwo;
+        $('.total').html(totalScore);
+        $.calculateWinsLosses();
+    });
+
+    $('#purpleCrystal').click(function () {
+        totalScore = totalScore + crystalThree;
+        $('.total').html(totalScore);
+        $.calculateWinsLosses();
+    });
+
+    $('#redCrystal').click(function () {
+        totalScore = totalScore + crystalFour;
+        $('.total').html(totalScore);
+        $.calculateWinsLosses();
+    });
+
+    $.calculateWinsLosses = function () {
+        if (totalScore === randomGameNumberFromRange) {
+            wins++;
+            $('#wins').html("Wins: " + wins);
+            $.resetGame();
+        }
+        else if (totalScore > randomGameNumberFromRange) {
+            losses++;
+            $('#losses').html("Losses: " + losses);
+            $.resetGame();
+        }
+    }
+
+    $.resetGame = function () {
+        totalScore = 0;
+        $('.total').html(totalScore);
+        $.getRandomGameNumberFromRange();
+        $.getCrystalOneNumber();
+        $.getCrystalTwoNumber();
+        $.getCrystalThreeNumber();
+        $.getCrystalFourNumber();
+    }
+
+    $.getRandomGameNumberFromRange = function () {
+        randomGameNumberFromRange = Math.floor(Math.random() * (maxGameNumber - minGameNumber + 1) + minGameNumber);
+        $('.gameNumber').html(randomGameNumberFromRange);
+        console.log(randomGameNumberFromRange);
+    }
+
+    $.getCrystalOneNumber = function () {
+        crystalOne = Math.floor(Math.random() * (maxCrystalNumber - minCrystalNumber + 1) + minCrystalNumber);
+        console.log(crystalOne);
+    }
+
+    $.getCrystalTwoNumber = function () {
+        crystalTwo = Math.floor(Math.random() * (maxCrystalNumber - minCrystalNumber + 1) + minCrystalNumber);
+        console.log(crystalTwo);
+    }
+
+    $.getCrystalThreeNumber = function () {
+        crystalThree = Math.floor(Math.random() * (maxCrystalNumber - minCrystalNumber + 1) + minCrystalNumber);
+        console.log(crystalThree);
+    }
+
+    $.getCrystalFourNumber = function () {
+        crystalFour = Math.floor(Math.random() * (maxCrystalNumber - minCrystalNumber + 1) + minCrystalNumber);
+        console.log(crystalFour);
+    }
 
 });
 
