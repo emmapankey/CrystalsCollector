@@ -32,63 +32,66 @@ $(document).ready(function() {
 
     // Click events for the crystals
     $('#blueCrystal').click(function () {
-        totalScore = totalScore + crystalOne;
-        $('.total').html(totalScore);
-        $.calculateWinsLosses();
+        //totalScore = totalScore + crystalOne;
+        //$('.total').html(totalScore);
+        $.calculateWinsLosses(crystalOne);
     });
 
     $('#greenCrystal').click(function () {
-        totalScore = totalScore + crystalTwo;
-        $('.total').html(totalScore);
-        $.calculateWinsLosses();
+        //totalScore = totalScore + crystalTwo;
+        //$('.total').html(totalScore);
+        $.calculateWinsLosses(crystalTwo);
     });
 
     $('#purpleCrystal').click(function () {
-        totalScore = totalScore + crystalThree;
-        $('.total').html(totalScore);
-        $.calculateWinsLosses();
+        //totalScore = totalScore + crystalThree;
+        //$('.total').html(totalScore);
+        $.calculateWinsLosses(crystalThree);
     });
 
     $('#redCrystal').click(function () {
-        totalScore = totalScore + crystalFour;
-        $('.total').html(totalScore);
-        $.calculateWinsLosses();
+        //totalScore = totalScore + crystalFour;
+        //$('.total').html(totalScore);
+        $.calculateWinsLosses(crystalFour);
     });
-
-   
 
   
     // Determine wins and losses
-    // function calculateWinsLosses()
-    // Should I just be using regular function declarations like the commented one above?
-    $.calculateWinsLosses = function () {
+    $.calculateWinsLosses = function (crystalValue) {
+
+        totalScore = totalScore + crystalValue;
+        $('.total').html(totalScore);
+
         if (totalScore === randomGameNumberFromRange) {
+
             wins++;
+
             $('#wins').html("Wins: " + wins);
-            // function alertWin() {
-            //     var youWon = $("<p>");
-            //       youWon.text("You won!");
-            //       $(".scoreBox").append(youWon);
-            // }
-            // setTimeout(alertWin, 1000);
+
+            // This next block runs these commands in this order...
+            // 1. A span is appended to scorebox.
+            // 2. scorebox is passed to the anonymous function as function argument el.
+            // 3. The anonymous function removes the span child from el, aka scorebox, after 2 seconds has elapsed.
             (function (el) {
                 setTimeout(function () {
                     el.children().remove("span");
                 }, 2000);
             }($(".scoreBox").append("<span id='alert'>You won!</span>")));
+
             $.resetGame();
         }
         else if (totalScore > randomGameNumberFromRange) {
+
             losses++;
+
             $('#losses').html("Losses: " + losses);
-            // var youLost = $("<p>");
-            // youLost.text("You lost!");
-            // $(".scoreBox").append(youLost);
+          
             (function (el) {
                 setTimeout(function () {
                     el.children().remove("span");
                 }, 2000);
             }($(".scoreBox").append("<span id='alert'>You lost!</span>")));
+
             $.resetGame();
         }
     }
