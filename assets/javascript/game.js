@@ -32,26 +32,18 @@ $(document).ready(function() {
 
     // Click events for the crystals
     $('#blueCrystal').click(function () {
-        //totalScore = totalScore + crystalOne;
-        //$('.total').html(totalScore);
         $.calculateWinsLosses(crystalOne);
     });
 
     $('#greenCrystal').click(function () {
-        //totalScore = totalScore + crystalTwo;
-        //$('.total').html(totalScore);
         $.calculateWinsLosses(crystalTwo);
     });
 
     $('#purpleCrystal').click(function () {
-        //totalScore = totalScore + crystalThree;
-        //$('.total').html(totalScore);
         $.calculateWinsLosses(crystalThree);
     });
 
     $('#redCrystal').click(function () {
-        //totalScore = totalScore + crystalFour;
-        //$('.total').html(totalScore);
         $.calculateWinsLosses(crystalFour);
     });
 
